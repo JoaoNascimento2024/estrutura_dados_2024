@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1720632226820" clover="3.2.0">
+  <project timestamp="1720632226820" name="All files">
+    <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5" elements="12" coveredelements="10" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1"/>
+    <file name="Stack.js" path="C:\Users\1724026\Desktop\ED\2 - pilhas\Stack.js">
+      <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="18" count="3" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="42" count="0" type="stmt"/>
+      <line num="50" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
