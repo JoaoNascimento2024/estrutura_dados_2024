@@ -40,4 +40,12 @@ class SetArray {
         }
         return newSet;
     }
+
+    isSubSetOf(set){        
+        for (let element of this.toList()){
+            if (!set.has(element))
+                return false;
+        }
+        return true;
+    }
 }
