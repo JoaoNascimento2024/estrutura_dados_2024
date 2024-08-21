@@ -76,6 +76,78 @@ class BinarySearchTree {
                 break;         
         }
     }  
+
+    min(){
+        return this.minNode(this.root);
+    }
+
+    minNode(node){
+        if (node == null){
+            return null;
+        }
+
+        while (true){
+            if (node.left !== null){
+                node = node.left;
+            }else{
+                return node.value;
+            }
+        }
+    }
+
+    max(){
+        return this.maxNode(this.root);
+    }
+
+    maxNode(node){
+        if (node == null){
+            return null;
+        }
+
+        while (true){
+            if (node.right !== null){
+                node = node.right;
+            }else{
+                return node.value;
+            }
+        }        
+    }
+
+    inOrderTraverse(callBack){
+        this.inOrderNode(this.root, callBack);
+    }
+
+    inOrderNode(node, callBack){
+        if (node != null){
+            this.inOrderNode(node.left, callBack);
+            callBack(node.value);
+            this.inOrderNode(node.right, callBack);
+        }
+    }
+
+    preOrderTraverse(callBack){
+        this.preOrderNode(this.root, callBack);
+    }
+
+    preOrderNode(node, callBack){
+        if (node != null){
+            callBack(node.value);
+            this.preOrderNode(node.left,callBack);
+            this.preOrderNode(node.right,callBack);
+        }
+    }
+
+    posOrderTraverse(callBack){
+        this.posOrderNode(this.root, callBack);
+    }
+
+    posOrderNode(node, callBack){
+        if (node != null){            
+            this.posOrderNode(node.left,callBack);
+            this.posOrderNode(node.right,callBack);
+            callBack(node.value);
+        }
+    }
     
   }
 
@@ -92,8 +164,23 @@ arvore.insert(45);
 arvore.insert(42);
 
 arvore.printNodeByLevel()
-//console.log("Max:", arvore.max())
-//console.log("Min:", arvore.min())
+console.log("Min:", arvore.min())
+console.log("Max:", arvore.max())
+
+console.log("/////////////////////////////////////");
+
+arvore.inOrderTraverse(value => console.log(value));
+
+console.log("/////////////////////////////////////");
+
+arvore.preOrderTraverse(value => console.log(value));
+
+console.log("/////////////////////////////////////");
+
+arvore.posOrderTraverse(value => console.log(value));
+
+
+
 //console.log(arvore.search(47))
 
 //arvore.inOrderTraverse(value=>console.log(value));
