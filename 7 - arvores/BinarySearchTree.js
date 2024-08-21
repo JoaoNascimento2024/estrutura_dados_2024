@@ -75,47 +75,9 @@ class BinarySearchTree {
             if (nodes.length === 0)
                 break;         
         }
-    }    
-
-    max(){
-        let node = this.root;
-        if (node === null){
-            return null;
-        }
-
-        while(true){
-            if (node.right !== null)
-                node = node.right;
-            else
-                break    
-        }
-        return node.value;
-    }
-
-    min(){
-        let node = this.root;
-        if (node === null){
-            return null;
-        }
-
-        while(true){
-            if (node.left !== null)
-                node = node.left;
-            else
-                break    
-        }
-        return node.value;
-    }
-
-    //Insert(value)
-    //search(value)
-    //inOrder()
-    //preOrder()
-    //postOrder()
-    //min()
-    //max()
-    //remove()
-}
+    }  
+    
+  }
 
 const arvore = new BinarySearchTree();
 arvore.insert(30);
@@ -130,5 +92,8 @@ arvore.insert(45);
 arvore.insert(42);
 
 arvore.printNodeByLevel()
-console.log("Max:", arvore.max())
-console.log("Min:", arvore.min())
+//console.log("Max:", arvore.max())
+//console.log("Min:", arvore.min())
+//console.log(arvore.search(47))
+
+//arvore.inOrderTraverse(value=>console.log(value));
