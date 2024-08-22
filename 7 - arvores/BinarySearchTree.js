@@ -148,6 +148,50 @@ class BinarySearchTree {
             callBack(node.value);
         }
     }
+
+    search(value){
+        return this.searchNode(this.root, value);
+    }
+
+    searchNode(node, value){
+        if (node === null){
+            return false;
+        }
+        while(true){
+            if (value === node.value){
+                return true;
+            }
+            if (value < node.value){
+                if (node.left == null)
+                    return false;
+                else 
+                    node = node.left;                
+            } else {
+                if (node.right == null)
+                    return false;
+                else
+                    node = node.right;
+            }
+       }
+    }
+
+    searchRecursive(value){
+        return this.searchRecursiveNode(this.root, value);
+    }
+
+    searchRecursiveNode(node, value){
+        if (node === null){
+            return false;
+        }
+        if (value === node.value){
+            return true;
+        }
+        if (value < node.value){
+            return this.searchRecursiveNode(node.left, value);
+        }else{
+            return this.searchRecursiveNode(node.right, value);
+        }        
+    }
     
   }
 
@@ -179,6 +223,10 @@ console.log("/////////////////////////////////////");
 
 arvore.posOrderTraverse(value => console.log(value));
 
+console.log("/////////////////////////////////////");
+
+console.log("Possui 100: ", arvore.search(100));
+console.log("Possui 100: ", arvore.searchRecursive(100));
 
 
 //console.log(arvore.search(47))
