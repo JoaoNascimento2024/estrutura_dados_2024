@@ -192,6 +192,62 @@ class BinarySearchTree {
             return this.searchRecursiveNode(node.right, value);
         }        
     }
+
+    removeJohn(value){
+        //Verificar se a árvore está vazia
+        if (this.root === null) return false;
+        //Variáveis auxiliares
+        let node = this.root;
+        let nodeParent = null; //Armazenar o pai do nó analisado
+        while (true){
+            if (node === null)
+                return false;
+
+            if (node.value === value){  
+
+                //Caso um 1 - Quando ele não tem filhos
+                if (node.left === null && node.right === null){
+                    if (nodeParent === null){
+                        this.root = null;                                            
+                    }else{
+                        if (node.value < nodeParent.value){
+                            nodeParent.left = null;                            
+                        }else{
+                            nodeParent.right = null;                            
+                        }
+                    }
+                    return true;
+                }
+
+                //Caso 2 - Filho da direita - Quando só tenho um filho
+                if (node.left === null && node.right !== null){
+                    if (node.value > nodeParent.value){
+                        nodeParent.right = node.right;
+                    }else{
+                        nodeParent.left = node.right;
+                    }
+                }
+                //Caso 2 - Filho da esquerda - Quando só tenho um filho
+                if (node.right === null && node.left !== null){
+                    if (node.value > nodeParent.value){
+                        nodeParent.right = node.left;
+                    }else{
+                        nodeParent.left = node.left;
+                    }
+                }
+
+                //Caso 3
+
+            }
+
+            nodeParent = node;
+            if (value < node.value){
+                node = node.left;
+            }else{
+                node = node.right;
+            }
+        }
+    }
     
   }
 
