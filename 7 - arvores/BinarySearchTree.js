@@ -95,6 +95,22 @@ class BinarySearchTree {
         }
     }
 
+    minNodeRemove(node){
+        if (node == null){
+            return null;
+        }
+
+        let nodeParent = null;
+        while (true){
+            if (node.left !== null){
+                nodeParent = node;
+                node = node.left;
+            }else{
+                return [node, nodeParent];
+            }
+        }
+    }
+
     max(){
         return this.maxNode(this.root);
     }
@@ -205,7 +221,7 @@ class BinarySearchTree {
 
             if (node.value === value){  
 
-                //Caso um 1 - Quando ele não tem filhos
+                //Caso um 1 - Quando o nó não tem filhos
                 if (node.left === null && node.right === null){
                     if (nodeParent === null){
                         this.root = null;                                            
@@ -219,7 +235,7 @@ class BinarySearchTree {
                     return true;
                 }
 
-                //Caso 2 - Filho da direita - Quando só tenho um filho
+                //Caso 2 - Filho da direita - Quando o nó só tenho um filho
                 if (node.left === null && node.right !== null){
                     if (node.value > nodeParent.value){
                         nodeParent.right = node.right;
@@ -227,7 +243,7 @@ class BinarySearchTree {
                         nodeParent.left = node.right;
                     }
                 }
-                //Caso 2 - Filho da esquerda - Quando só tenho um filho
+                //Caso 2 - Filho da esquerda - Quando o nó só tenho um filho
                 if (node.right === null && node.left !== null){
                     if (node.value > nodeParent.value){
                         nodeParent.right = node.left;
@@ -236,7 +252,15 @@ class BinarySearchTree {
                     }
                 }
 
-                //Caso 3
+                //Caso 3 - Quando o nó tem dois filhos
+                if (node.left !== null && node.right !== null){
+                    const [nodeMin, nodeMinParent] = this.minNodeRemove(node.right);
+                    nodeParent.right = nodeMin;                    
+                    nodeMin.left = node.left;
+                    if (nodeMinParent !== null){
+                        nodeMinParent.left = null;
+                    }
+                }
 
             }
 
@@ -264,6 +288,15 @@ arvore.insert(45);
 arvore.insert(42);
 
 arvore.printNodeByLevel()
+arvore.removeJohn(45);
+arvore.printNodeByLevel()
+arvore.removeJohn(40);
+arvore.printNodeByLevel();
+arvore.removeJohn(8);
+arvore.printNodeByLevel();
+arvore.removeJohn(5);
+arvore.printNodeByLevel();
+/*
 console.log("Min:", arvore.min())
 console.log("Max:", arvore.max())
 
@@ -288,3 +321,4 @@ console.log("Possui 100: ", arvore.searchRecursive(100));
 //console.log(arvore.search(47))
 
 //arvore.inOrderTraverse(value=>console.log(value));
+*/
